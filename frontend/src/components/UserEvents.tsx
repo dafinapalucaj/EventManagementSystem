@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const UserEvents: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const UserEvents: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/user/events', {
+      const response = await fetch(`${apiUrl}/user/events`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),

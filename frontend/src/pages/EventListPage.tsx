@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './EventListPage.css'; 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const EventListPage: React.FC = () => {
   const [events, setEvents] = useState<any[]>([]);
@@ -7,7 +9,7 @@ const EventListPage: React.FC = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('http://localhost:3000/events');
+        const response = await fetch(`${apiUrl}/events`);
         if (!response.ok) {
           throw new Error('Failed to fetch events');
         }

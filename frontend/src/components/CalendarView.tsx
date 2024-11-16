@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 interface Event {
   id: number;
@@ -11,7 +12,7 @@ interface Event {
 }
 
 const fetchEvents = async (): Promise<Event[]> => {
-  const response = await fetch('http://localhost:3000/events');
+  const response = await fetch(`${apiUrl}/events`);
   if (!response.ok) {
     throw new Error('Failed to fetch events');
   }

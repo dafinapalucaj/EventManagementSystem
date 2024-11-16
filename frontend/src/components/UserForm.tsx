@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const UserForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -10,7 +11,7 @@ const UserForm: React.FC = () => {
     const user = { email, name };
 
     try {
-      const res = await fetch('http://localhost:3000/users', {  
+      const res = await fetch(`${apiUrl}/users`, {  
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user),

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const EventForm: React.FC = () => {
   const [title, setTitle] = useState('');
@@ -45,7 +46,7 @@ const EventForm: React.FC = () => {
     const event = { title, description, date, createdBy: userName };
 
     try {
-      const res = await fetch('http://localhost:3000/events', {
+      const res = await fetch(`${apiUrl}/events`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(event),

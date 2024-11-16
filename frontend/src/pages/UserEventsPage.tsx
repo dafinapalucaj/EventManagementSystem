@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './EventListPage.css';  
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const UserEventsPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -10,7 +11,7 @@ const UserEventsPage: React.FC = () => {
   // Fetch the events a user is registered for
   const fetchUserEvents = async () => {
     try {
-      const response = await fetch('http://localhost:3000/user/events', {
+      const response = await fetch(`${apiUrl}/user/events`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),

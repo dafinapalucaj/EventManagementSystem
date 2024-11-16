@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const RegisterForEvent: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [eventName, setEventName] = useState('');
@@ -8,7 +9,7 @@ const RegisterForEvent: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/registrations', {
+      const response = await fetch(`${apiUrl}/registrations`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
