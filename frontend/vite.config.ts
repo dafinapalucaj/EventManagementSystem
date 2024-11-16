@@ -8,7 +8,7 @@ export default defineConfig({
     open: true, 
     proxy: {
       '/api': {
-        target: 'http://localhost:3000', 
+        target: process.env.VITE_API_URL || 'http://localhost:3000',  // fallback to local URL
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
@@ -23,5 +23,5 @@ export default defineConfig({
       '@': '/src', 
     },
   },
-  publicDir: 'public', 
+  publicDir: 'public',
 });
