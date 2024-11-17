@@ -1,19 +1,14 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { PrismaClient } from '@prisma/client';
-import eventRoutes from './routes/eventRoutes.js';
-
+import eventRoutes from './routes/eventRoutes.js';  
 const fastify = Fastify({ logger: true });
+
 const prisma = new PrismaClient();
 
-// Register CORS with specific options
-fastify.register(cors, {
-  origin: ['https://event-management-system-rouge-rho.vercel.app/'], 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-});
+fastify.register(cors);
 
-fastify.register(eventRoutes);
+fastify.register(eventRoutes); 
 
 fastify.get('/', async (request, reply) => {
   return { message: 'Welcome to the Event Management System API!' };
@@ -30,7 +25,7 @@ const startServer = async () => {
   }
 };
 
-// Start the server
+
 startServer();
 
 process.on('SIGINT', async () => {
